@@ -1,0 +1,31 @@
+###Tarea 4-Markdown
+
+ ##Pasos a seguir:
+
+1. Primero clonamos el repositorio "git clone diana170309@github.com/diana170309/poo1"
+
+2. Creamos un branch  "git checkout -b proceso-tareas.md"
+
+3. git commit 
+
+4. Hacer push "git push origin proceso-tareas.md"
+
+5. PR "diana170309/proceso-tareas.md/Montealegre Luis/diana170309"
+
+6. Combinamos "git checkout master" con "git merge proceso-tareas.md"
+
+###Codigo
+
+```include <iostream>
+	** using namespace std;
+
+int main()
+{
+	int =d;
+	for (d=1;d<=10;i++)
+	{
+	cout<<c<<endl;
+	}
+	return 0;
+}
+```
