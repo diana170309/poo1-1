@@ -1,121 +1,99 @@
-println ("Elige el numero del Ejercicio que deseas:  ")
-println ("1. Salario")
-println ("2. Compra ")
-println ("3. Descuento")
-
-
-var Opcion= readInt ()
-
-Opcion match {
-	case 1 => Salario ()
-	case 2 => Compra  ()
-	case 3 => Descuento ()
-	case 4 => println ("Opcion invalida")
-}
-
-def  Salario () {
-
-	println ("ingresar las horas trabajadas por el obrero")
-val HorasTrabajadas=readFloat
-
-if  (HorasTrabajadas<=40){
-  val salario=HorasTrabajadas* 160
-  println("se le pagara al empleado $160 por hora, el salario total es: " + salario)
-}
-else {
-	val HorasExtra=HorasTrabajadas- 40 
-	 val SalarioTotal=HorasExtra *200 + 6400
-
-	println ("Se le pagara al  empleado $160 las primeras 40 horas y cada hora extra $200, la cantidad que se le pagara es:  " + SalarioTotal)
-
-}
-
-}
-
-def Compra  () {
-	
-	println ("Monto total de la compra")
-val MontoTotal=readFloat ()
-
-
-if (MontoTotal<=500000)
-{
-val PagoEmpresa=(MontoTotal*.70)
-val PagoFabricante=(MontoTotal*.30)
-val ConceptoIntereses=(PagoFabricante*.20)
-println ("El pago que  efectuara la empresa es " + PagoEmpresa)
-println ("El credito que se le solicitara al fabricante es " + PagoFabricante)
-println ("El interes que se le pagara al fabricante por el credito es "  + ConceptoIntereses)
-
-}
-
-else if (MontoTotal>500000)
-{
-val PagoEmpresa=(MontoTotal*.55)
-val PagoBanco=(MontoTotal*.30)
-val PagoFabricante=(MontoTotal*.15)
-val ConceptoIntereses=PagoFabricante*.20
-println ("El pago que  efectuara la empresa es " + PagoEmpresa )
-println ("El banco prestara   " + PagoBanco  )
-println ("El credito que se le solicitara al fabricante es " + PagoFabricante)
-println ("El interes que se le pagara al fabricante por el credito es "  + ConceptoIntereses)
-}
-
-else 
-{
-("Valores Fuera de rango")
-}
-
-}
-
-def  Descuento () {
-	
-	println ("Introduce la cantidad de tu compra")
-val CompraRealizada=readFloat()
-
-
-println ("Los colores de las bolas son: ")
-println ("1.Blanca")
-println ("2.Verde")
-println ("3.Amarilla")
-println ("4.Azul")
-println ("5.Roja")																															
-println ("Elige el numero que corresponda al color de la bola obtenida:")
-val Bola = readInt()
+class Racional(n: Int, d: Int)  {
+  var numerador = n
+  var denominador = d
  
- Bola match {
-
- case 1  => println("No se le hara ningun descuento :(, su total a pagar es: " + CompraRealizada)
- 
-
-
- case 2 =>{ 
- 	println("Usted tiene un descuento del 10% de su compra, su total a pagar es: " )
- 	val descuento=CompraRealizada*.10
-     val total=CompraRealizada - descuento
-     println (" " + total)
-}    
- case 3 => {
- 	println("Usted tiene un descuento del 25% de su compra, su total a pagar es: " )
- 	val descuento=CompraRealizada*.25
-     val total=CompraRealizada - descuento
-     println (" " + total)
+def Suma(b: Racional): Racional = {
+    new Racional(
+      numerador * b.denominador + denominador * b.numerador,
+      denominador * b.denominador
+    ) 
 }
- case 4 => {
- 	println("Usted tiene un descuento del 50% de su compra, su total a pagar es: " )
- 	val descuento=CompraRealizada*.50
-     val total=CompraRealizada - descuento 
-     println (" " + total)
+ def Resta (b: Racional): Racional = {
+    new Racional(
+      numerador * b.denominador - denominador * b.numerador,
+      denominador * b.denominador
+    )
+  }
+def Multiplicacion (b: Racional): Racional = {
+    new Racional(
+      numerador * b.numerador ,
+      denominador * b.denominador
+    )
+  }
+
+  def Division (b: Racional): Racional = {
+    new Racional(
+      numerador * b.denominador,
+        denominador * b.numerador
+      
+    )
+  }
+}
+var Opcion = 5
+
+do {
+  
+  println("Numerador de la primera fraccion: ")
+val n1 = readInt()
+println("Denominador de la primera fraccion: ")
+val d1 = readInt()
+val fraccion1 = new Racional(n1, d1)
+
+println("Numerador de la primera fraccion: ")
+val n2 = readInt()
+println("Denominador de la primera fraccion: ")
+val d2 = readInt()
+val fraccion2 = new Racional(n2, d2)
+
+
+  println ("Elige la operacion de fracciones que deseas realizar:  ")
+  println ("1. Suma")
+  println ("2. Resta")
+  println ("3.  Multiplicacion")
+  println ("4.  Division") 
+  println ("5.  Salir")
+
+  Opcion = readInt ()
+
+
+
+   Opcion match {
+
+	case 1 =>  {
+
+ val Suma = fraccion1.Suma(fraccion2)
+
+println ("Resultado:   " + Suma.numerador + "/" + Suma.denominador)
+}
+  	
+  	case 2 =>  {
+ val Resta = fraccion1.Resta(fraccion2)
+
+println ("Resultado:   " + Resta.numerador + "/" + Resta.denominador)
+	}
+
+		case 3 => {
+ val Multiplicacion = fraccion1.Multiplicacion(fraccion2)
+
+println ("Resultado:   " + Multiplicacion.numerador + "/" + Multiplicacion.denominador)
+	
+}
+
+  	case 4 =>  {
+val Division = fraccion1.Division(fraccion2)
+
+println ("Resultado:   " + Division.numerador + "/" + Division.denominador)
  }
 
- case 5 => {
- 	println("Usted tiene un descuento del 100% de su compra, su total a pagar es: ")
-     val descuento=CompraRealizada*.100
-     val total=CompraRealizada - descuento
-     println (" " + total)
-   } 
+ case default => println ("Hasta Pronto")
 
- case default => println("Color de bola no existente") }
 
 }
+}
+
+while (Opcion != 5)
+println("Hasta Pronto")
+
+
+  
 
